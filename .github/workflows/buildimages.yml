@@ -18,6 +18,14 @@ jobs:
         run: |
           bash ci/build-prod-images.sh
 
-      - name: Push Docker Images to Docker Hub
+      - name: Log in to Docker Hub
         run: |
-          docker push mwaya/litefarm:latest
+          docker login -u "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_PASSWORD"
+
+      - name: Push Backend Docker Image to Docker Hub
+        run: |
+          docker push litefarm/backend:latest
+
+      - name: Push Frontend Docker Image to Docker Hub
+        run: |
+          docker push litefarm/frontend:latest
