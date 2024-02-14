@@ -17,3 +17,7 @@ jobs:
       - name: Execute Bash Script
         run: |
           bash ci/build-prod-images.sh
+
+      - name: Push Docker Images to Docker Hub
+        run: |
+          docker push mwaya/litefarm:latest
