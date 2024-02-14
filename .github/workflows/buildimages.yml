@@ -1,0 +1,19 @@
+name: Build Images
+
+on:
+  push:
+    branches:
+      - integration
+
+jobs:
+  run_script:
+    name: Run Bash Script
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Execute Bash Script
+        run: |
+          bash ci/build-prod-images.sh
