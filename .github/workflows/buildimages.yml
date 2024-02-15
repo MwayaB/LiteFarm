@@ -20,7 +20,7 @@ jobs:
 
       - name: Log in to Docker Hub
         run: |
-          docker login -u "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_PASSWORD"
+          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_PASSWORD"
 
       - name: Push Backend Docker Image to Docker Hub
         run: |
