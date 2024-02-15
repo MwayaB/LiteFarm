@@ -24,8 +24,8 @@ jobs:
 
       - name: Push Backend Docker Image to Docker Hub
         run: |
-          docker push litefarm/backend:latest
+          docker push mwaya/litefarm/backend:latest
 
       - name: Push Frontend Docker Image to Docker Hub
         run: |
-          docker push litefarm/frontend:latest
+          docker push mwaya/litefarm/frontend:latest
