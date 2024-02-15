@@ -20,12 +20,12 @@ jobs:
 
       - name: Log in to Docker Hub
         run: |
-          docker login -u "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_PASSWORD"
+          docker login -u "$DOCKERHUB_USERNAME" --password-stdin <<< "$DOCKERHUB_PASSWORD"
 
       - name: Push Backend Docker Image to Docker Hub
         run: |
-          docker push litefarm/backend:latest
+          docker push mwaya/litefarm/backend:latest
 
       - name: Push Frontend Docker Image to Docker Hub
         run: |
-          docker push litefarm/frontend:latest
+          docker push mwaya/litefarm/frontend:latest
