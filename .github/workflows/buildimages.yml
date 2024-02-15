@@ -1,0 +1,31 @@
+name: Build Images
+
+on:
+  pull_request:
+    branches:
+      - integration
+
+jobs:
+  run_script:
+    name: Run Bash Script
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Execute Bash Script
+        run: |
+          bash ci/build-prod-images.sh
+
+      - name: Log in to Docker Hub
+        run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_PASSWORD"
+
+      - name: Push Backend Docker Image to Docker Hub
+        run: |
+          docker push mwaya/litefarm:backend_latest
+
+      - name: Push Frontend Docker Image to Docker Hub
+        run: |
+          docker push mwaya/litefarm:frontend_latest
